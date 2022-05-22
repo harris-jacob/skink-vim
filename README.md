@@ -1,4 +1,4 @@
-#skink-vim
+# skink-vim
 ![skink-vim](./resources/skink-vim.png)
 My attempt at creating a nice nvim workflow for myself. This started out as a fork of [cosmic](https://github.com/CosmicNvim/CosmicNvim)
 but has now become an evergrowing amalgamation of other stuff I have seen. See Below:
