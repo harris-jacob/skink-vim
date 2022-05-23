@@ -23,7 +23,7 @@ function M.toggle_format_on_save()
 end
 
 function M.register()
-    vim.api.nvim_create_user_command('LspToggleAutoFormat', 'lua require("lsp.functions").toggle_format_on_save()', {})
+    vim.api.nvim_create_user_command('LspToggleAutoFormat', 'lua require("skink-vim.lsp.functions").toggle_format_on_save()', {})
 end
 
 return M

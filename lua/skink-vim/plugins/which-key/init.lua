@@ -68,6 +68,8 @@ local opts = {
 
 local mappings = {
 
+
+
     -- ignore
     ["1"] = "which_key_ignore",
     ["2"] = "which_key_ignore",
@@ -80,6 +82,7 @@ local mappings = {
     ["9"] = "which_key_ignore",
 
     -- single
+    ["'"] = {}
     ["="] = { '<cmd>vertical resize +5<CR>', 'resize +5' },
     ["-"] = { '<cmd>vertical resize -5<CR>', 'resize +5' },
     ["v"] = { '<C-W>v', 'split right' },
@@ -162,9 +165,8 @@ local mappings = {
 
 
     t = {
-        name = "Table Mode",
-        m = { 'toggle' },
-        t = { 'tableize' },
+        name = "Terminal",
+        t = {':FloattermToggle<CR>', }
     },
 }
 

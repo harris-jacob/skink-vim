@@ -10,6 +10,17 @@ return packer.startup(function(use)
     'nvim-lua/plenary.nvim',
   })
 
+  -- theme stuff
+  -- use({ -- statusline
+  --   'NTBBloodbath/galaxyline.nvim',
+  --   branch = 'main',
+  --   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  --   config = function()
+  --     require('skink-vim.plugins.galaxyline')
+  --   end,
+  --   after = require('skink-vim.config').theme,
+  -- })
+
   -- file explorer
   use({
     'kyazdani42/nvim-tree.lua',
@@ -77,17 +88,30 @@ return packer.startup(function(use)
     config = function()
       require('skink-vim.plugins.nvim-cmp')
     end,
-    { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-    { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-    {
-      'windwp/nvim-autopairs',
-      config = function()
-        require('skink-vim.plugins.auto-pairs')
-      end,
-      after = 'nvim-cmp',
+    requires = {
+      {
+        'L3MON4D3/LuaSnip',
+        config = function()
+          require('skink-vim.plugins.luasnip')
+        end,
+        requires = {
+          'rafamadriz/friendly-snippets',
+        },
+      },
+      { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
+      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+      {
+        'windwp/nvim-autopairs',
+        config = function()
+          require('skink-vim.plugins.auto-pairs')
+        end,
+        after = 'nvim-cmp',
+      },
     },
+    event = 'InsertEnter'
   })
 
   -- git commands
@@ -97,7 +121,7 @@ return packer.startup(function(use)
     cmd = 'Git',
   })
 
-  -- Lua
+  -- key commands
   use {
     "folke/which-key.nvim",
     config = function()
@@ -115,11 +139,47 @@ return packer.startup(function(use)
     end,
   })
 
-
+  -- lang/syntax
   use({
-    't9md/vim-choosewin'
+    'nvim-treesitter/nvim-treesitter',
+    requires = {
+      'windwp/nvim-ts-autotag',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'nvim-treesitter/nvim-treesitter-refactor',
+    },
+    run = ':TSUpdate',
+    config = function()
+      require('skink-vim.plugins.treesitter')
+    end,
   })
 
+
+  -- UI
+  use({
+    'CosmicNvim/cosmic-ui',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('skink-vim.plugins.cosmic-ui')
+    end,
+    event = 'BufWinEnter',
+  })
+
+  -- Icons
+  use(
+    { 'kyazdani42/nvim-web-devicons' }
+  )
+
+  -- Terminal
+  use({
+    'voldikss/vim-floaterm',
+    opt = true,
+    event = 'BufWinEnter',
+    config = function()
+      require('skink-vim.plugins.terminal')
+    end,
+  })
 
   if packer_mod.first_install then
     packer.sync()

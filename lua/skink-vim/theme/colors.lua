@@ -1,7 +1,7 @@
-local config = require('skink-vim.core.config')
+local config = require('skink-vim.config')
 local colors = {}
-local mod = 'skink-vim.theme.defaults'
-local supported_themes = require('skink-vim.theme.plugins')
+local mod = 'skink-vim.theme.defaults.'
+local supported_themes = require('skink-vim.theme.plugins').supported_themes
 
 
 for _, theme in pairs(supported_themes) do
