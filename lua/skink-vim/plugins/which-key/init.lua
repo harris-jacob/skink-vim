@@ -82,7 +82,7 @@ local mappings = {
     ["9"] = "which_key_ignore",
 
     -- single
-    ["'"] = {}
+    ["'"] = { ':FloattermToggle<CR>', },
     ["="] = { '<cmd>vertical resize +5<CR>', 'resize +5' },
     ["-"] = { '<cmd>vertical resize -5<CR>', 'resize +5' },
     ["v"] = { '<C-W>v', 'split right' },
@@ -161,12 +161,6 @@ local mappings = {
     p = {
         -- TODO
         name = "Project",
-    },
-
-
-    t = {
-        name = "Terminal",
-        t = {':FloattermToggle<CR>', }
     },
 }
 
