@@ -1,5 +1,6 @@
-local map = require('skink-vim.utils')
+local map = require('skink-vim.utils').map
 
+map('n', '<C-l>', ':FloatermToggle <CR>')
 map('t', '<C-l>', [[<C-\><C-n>]])
 map('t', '<C-w>l', [[<C-\><C-n>:FloatermNext<CR>]])
 map('t', '<C-w>h', [[<C-\><C-n>:FloatermPrev<CR>]])

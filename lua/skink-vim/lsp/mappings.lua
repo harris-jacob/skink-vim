@@ -22,12 +22,12 @@ function M.init(client, bufnr)
     buf_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
     -- code actions
-    buf_map(bufnr, 'n', '<leader>ga', '<cmd>lua require("cosmic-ui").code_actions()<cr>')
-    buf_map(bufnr, 'v', '<leader>ga', '<cmd>lua require("cosmic-ui").range_code_actions()<cr>')
+    buf_map(bufnr, 'n', '<leader>aa', '<cmd>lua require("cosmic-ui").code_actions()<cr>')
+    buf_map(bufnr, 'v', '<leader>aa', '<cmd>lua require("cosmic-ui").range_code_actions()<cr>')
 
     -- formatting
-    buf_map(bufnr, 'n', '<leader>gf', '<cmd>lua vim.lsp.buf.formatting()<cr>')
-    buf_map(bufnr, 'v', '<leader>gf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
+    buf_map(bufnr, 'n', '<leader>af', '<cmd>lua vim.lsp.buf.formatting()<cr>')
+    buf_map(bufnr, 'v', '<leader>af', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
 
     -- signature help
     buf_map(bufnr, 'n', '<C-K>', '<cmd>lua require("lsp_signature").signature()<cr>')
@@ -40,9 +40,9 @@ function M.init(client, bufnr)
     -- TODO: move to local ts-mappings
     if client.name == 'tsserver' then
         -- typescript helpers
-        buf_map(bufnr, 'n', '<leader>gr', ':TSLspRenameFile<CR>')
-        buf_map(bufnr, 'n', '<leader>go', ':TSLspOrganize<CR>')
-        buf_map(bufnr, 'n', '<leader>gi', ':TSLspImportAll<CR>')
+        buf_map(bufnr, 'n', '<leader>ar', ':TSLspRenameFile<CR>')
+        buf_map(bufnr, 'n', '<leader>ao', ':TSLspOrganize<CR>')
+        buf_map(bufnr, 'n', '<leader>ai', ':TSLspImportAll<CR>')
     end
 end
 
