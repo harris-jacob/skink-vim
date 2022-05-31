@@ -44,6 +44,18 @@ function M.init(client, bufnr)
         buf_map(bufnr, 'n', '<leader>ao', ':TSLspOrganize<CR>')
         buf_map(bufnr, 'n', '<leader>ai', ':TSLspImportAll<CR>')
     end
+
+    if client.name == 'gopls' then
+      -- go helpers
+        buf_map(bufnr, 'n', '<leader>ad', ':GoDoc<CR>')
+        buf_map(bufnr, 'n', '<leader>at', ':GoTest<CR>')
+        buf_map(bufnr, 'n', '<leader>al', ':GoLint<CR>')
+        buf_map(bufnr, 'n', '<leader>aD', ':GoDebugStart<CR>')
+        buf_map(bufnr, 'n', '<leader>ao', ':TSLspOrganize<CR>')
+        buf_map(bufnr, 'n', '<leader>ai', ':GoImport<CR>')
+
+    end
+
 end
 
 return M

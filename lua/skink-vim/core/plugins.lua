@@ -82,6 +82,12 @@ return packer.startup(function(use)
     },
   })
 
+  -- golang support
+  use({
+    'fatih/vim-go',
+    cmd = {'GoInstallBinaries'}
+  })
+
   -- autocompletion
   use({
     'hrsh7th/nvim-cmp',

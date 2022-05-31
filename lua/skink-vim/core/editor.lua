@@ -7,6 +7,10 @@ cmd([[
 	filetype plugin indent on
 ]])
 
+cmd([[
+  	set clipboard+=unnamedplus
+]])
+
 g.mapleader = ' '
 
 -- misc
@@ -54,6 +58,7 @@ opt.signcolumn = 'yes'
 opt.splitbelow = true -- Open new split below
 opt.splitright = true -- Open new split to the right
 opt.wrap = false
+-- opt.termguicolors = true
 
 -- backups
 opt.backup = false

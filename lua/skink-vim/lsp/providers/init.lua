@@ -2,7 +2,8 @@ local lsp_installer = require('nvim-lsp-installer')
 
 -- import providers
 local providers = {
-    tsserver = require("skink-vim.lsp.providers.tsserver")
+    tsserver = require("skink-vim.lsp.providers.tsserver"),
+    gopls = require("skink-vim.lsp.providers.gopls"),
 }
 
 -- global settings
@@ -22,7 +23,7 @@ lsp_installer.settings({
 })
 
 -- add servers here
-local servers = { 'tsserver' }
+local servers = { 'tsserver', 'gopls' }
 
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
