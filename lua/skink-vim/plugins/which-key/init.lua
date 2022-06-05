@@ -67,19 +67,16 @@ local opts = {
 }
 
 local mappings = {
-
-
-
     -- ignore
-    ["1"] = "which_key_ignore",
-    ["2"] = "which_key_ignore",
-    ["3"] = "which_key_ignore",
-    ["4"] = "which_key_ignore",
-    ["5"] = "which_key_ignore",
-    ["6"] = "which_key_ignore",
-    ["7"] = "which_key_ignore",
-    ["8"] = "which_key_ignore",
-    ["9"] = "which_key_ignore",
+    ['1'] = { '<Cmd>BufferLineGoToBuffer 1<CR>', 'which_key_ignore' },
+    ['2'] = { '<Cmd>BufferLineGoToBuffer 2<CR>', 'which_key_ignore' },
+    ['3'] = { '<Cmd>BufferLineGoToBuffer 3<CR>', 'which_key_ignore' },
+    ['4'] = { '<Cmd>BufferLineGoToBuffer 4<CR>', 'which_key_ignore' },
+    ['5'] = { '<Cmd>BufferLineGoToBuffer 5<CR>', 'which_key_ignore' },
+    ['6'] = { '<Cmd>BufferLineGoToBuffer 6<CR>', 'which_key_ignore' },
+    ['7'] = { '<Cmd>BufferLineGoToBuffer 7<CR>', 'which_key_ignore' },
+    ['8'] = { '<Cmd>BufferLineGoToBuffer 8<CR>', 'which_key_ignore' },
+    ['9'] = { '<Cmd>BufferLineGoToBuffer 9<CR>', 'which_key_ignore' },
 
     -- single
     ["'"] = { ':FloatermToggle<CR>', 'terminal' },
@@ -105,14 +102,18 @@ local mappings = {
 
     b = {
         name = "Buffer",
-        b = { '<cmd>BufferMovePrevious<CR>', 'Move back' },
         c = { '<cmd>BufferCloseAllButCurrent<CR>', 'Close but current' },
-        d = { '<cmd>BufferOrderByDirectory<CR>', 'Order by directory' },
+        d = { '<cmd>BufferLineSortByDirectory<CR>', 'Order by directory' },
         f = { '<cmd>bfirst<CR>', 'First buffer' },
-        l = { '<cmd>BufferCloseBuffersLeft<CR>', 'Close Left' },
-        r = { '<cmd>BufferCloseBuffersRight<CR>', 'Close Right' },
-        n = { '<cmd>BufferMoveNext<CR>', 'Move next' },
-        p = { '<cmd>BufferPick<CR>', 'Pick Buffer' },
+        l = { '<cmd>BufferLineCloseLeft<CR>', 'Close Left' },
+        r = { '<cmd>BufferLineCloseRight<CR>', 'Close Right' },
+        q = {"<cmd>lua require('skink-vim.plugins.bufferline.functions').close_buffer()<CR>", 'Close Current'},
+        pd = { '<Cmd>BufferLinePickClose<CR>', 'bufferline: pick delete' },
+        p = { '<Cmd>BufferLinePick<CR>', 'Pick buffer' },
+        [']'] =  { '<Cmd>BufferLineCycleNext<CR>', 'bufferline: next' },
+        ['['] = { '<Cmd>BufferLineCyclePrev<CR>', 'bufferline: prev' },
+        ['m]'] = { '<Cmd>BufferLineMoveNext<CR>', 'bufferline: move next' },
+        ['m['] = { '<Cmd>BufferLineMovePrev<CR>', 'bufferline: move prev' },
     },
 
     c = {
@@ -140,7 +141,7 @@ local mappings = {
         k    = { ":Telescope buffers<cr>", "Find in buffers" },
         s    = { ":Telescope live_grep<cr>", "Live grep" },
         w    = { ":Telescope grep_string<cr>", "Grep string" },
-        p    = { "<cmd>lua require('skink-vim.plugins.telescope.mappings').project_files()<cr>", "Project Files" },
+        p    = { "<cmd>lua require('skink-vim.plugins.telescope.mappings').project_files()<CR>", "Project Files" },
         e    = {
             name = "Environment",
             d    = { '<cmd>lua require("skink-vim.plugins.telescope.mappings").edit_neovim()<CR>', 'dotfiles' },

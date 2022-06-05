@@ -10,16 +10,6 @@ return packer.startup(function(use)
     'nvim-lua/plenary.nvim',
   })
 
-  -- theme stuff
-  -- use({ -- statusline
-  --   'NTBBloodbath/galaxyline.nvim',
-  --   branch = 'main',
-  --   requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  --   config = function()
-  --     require('skink-vim.plugins.galaxyline')
-  --   end,
-  --   after = require('skink-vim.config').theme,
-  -- })
 
   -- file explorer
   use({
@@ -186,6 +176,15 @@ return packer.startup(function(use)
       require('skink-vim.plugins.terminal')
     end,
   })
+
+
+  -- tab/buffer line
+  use({
+    'akinsho/bufferline.nvim',
+    tag = "v2.*",
+  })
+
+  require('skink-vim.plugins.bufferline')
 
   if packer_mod.first_install then
     packer.sync()

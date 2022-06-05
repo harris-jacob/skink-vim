@@ -11,6 +11,8 @@ local warning_colors = get_highlight('DiagnosticWarn')
 local hint_colors = get_highlight('DiagnosticHint')
 local info_colors = get_highlight('DiagnosticInfo')
 
+vim.g.edge_transparent_background = 1
+
 set_highlight('DiagnosticErrorInv', {
     guibg = error_colors.guifg,
     guifg = statusline_colors.guibg,
