@@ -186,6 +186,11 @@ return packer.startup(function(use)
 
   require('skink-vim.plugins.bufferline')
 
+  -- notification toast
+  use({
+    'rcarriga/nvim-notify',
+  })
+
   if packer_mod.first_install then
     packer.sync()
   end

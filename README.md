@@ -20,3 +20,4 @@ Required installs are:
 - eslint_d
 - prettier_d
 - markdownlint-cli
+- ripgrep (required by telescope for live grep)
