@@ -10,8 +10,7 @@ return packer.startup(function(use)
     'nvim-lua/plenary.nvim',
   })
 
-
-  -- file explorer
+-- file explorer
   use({
     'kyazdani42/nvim-tree.lua',
     config = function()
@@ -28,7 +27,7 @@ return packer.startup(function(use)
     event = 'VimEnter',
   })
 
-  -- file navigation
+-- file navigation
   use({
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -48,13 +47,10 @@ return packer.startup(function(use)
   -- LSP
   use({
     'neovim/nvim-lspconfig',
-    -- config = function()
-    --   require('skink-vim.lsp')
-    -- end,
+     config = function()
+     require('skink-vim.lsp')
+     end,
     requires = {
-      { 'b0o/SchemaStore.nvim' },
-      { 'williamboman/nvim-lsp-installer' },
-      { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       {
         'ray-x/lsp_signature.nvim',
         config = function()
@@ -78,8 +74,13 @@ return packer.startup(function(use)
     cmd = {'GoInstallBinaries'}
   })
 
-  -- autocompletion
+  -- zig support
   use({
+    'ziglang/zig.vim'
+  })
+
+  -- autocompletion
+    use({
     'hrsh7th/nvim-cmp',
     config = function()
       require('skink-vim.plugins.nvim-cmp')
@@ -127,7 +128,7 @@ return packer.startup(function(use)
 
   require('skink-vim.theme.plugins').init(use, config)
 
-  -- -- session/project management
+-- session/project management
   use({
     'glepnir/dashboard-nvim',
     config = function()
@@ -135,37 +136,32 @@ return packer.startup(function(use)
     end,
   })
 
-  -- lang/syntax
-  use({
-    'nvim-treesitter/nvim-treesitter',
-    requires = {
-      'windwp/nvim-ts-autotag',
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      'nvim-treesitter/nvim-treesitter-refactor',
-    },
-    run = ':TSUpdate',
-    config = function()
-      require('skink-vim.plugins.treesitter')
-    end,
-  })
+-- lang/syntax
+ use({
+   'nvim-treesitter/nvim-treesitter',
+   requires = {
+     'windwp/nvim-ts-autotag',
+     'JoosepAlviste/nvim-ts-context-commentstring',
+     'nvim-treesitter/nvim-treesitter-refactor',
+   },
+   run = ':TSUpdate',
+   config = function()
+     require('skink-vim.plugins.treesitter')
+   end,
+ })
 
 
   -- UI
-  use({
-    'CosmicNvim/cosmic-ui',
-    requires = {
-      'MunifTanjim/nui.nvim',
-    },
-    config = function()
-      require('skink-vim.plugins.cosmic-ui')
-    end,
-    event = 'BufWinEnter',
-  })
-
-  -- Icons
-  use(
-    { 'kyazdani42/nvim-web-devicons' }
-  )
+ use({
+   'CosmicNvim/cosmic-ui',
+   requires = {
+     'MunifTanjim/nui.nvim',
+   },
+   config = function()
+     require('skink-vim.plugins.cosmic-ui')
+   end,
+   event = 'BufWinEnter',
+ })
 
   -- Terminal
   use({
@@ -178,15 +174,18 @@ return packer.startup(function(use)
   })
 
 
-  -- tab/buffer line
+-- tab/buffer line
   use({
     'akinsho/bufferline.nvim',
-    tag = "v2.*",
+    tag = "v3.*",
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function() 
+      require('skink-vim.plugins.bufferline')
+    end,
   })
 
-  require('skink-vim.plugins.bufferline')
 
-  -- notification toast
+-- notification toast
   use({
     'rcarriga/nvim-notify',
   })

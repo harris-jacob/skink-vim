@@ -32,7 +32,7 @@ opt.tabstop = indent
 opt.hlsearch = false
 opt.ignorecase = true
 opt.smartcase = true
-opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*', '*/.cache/*' }
+opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*', '*/.cache/*', '*/bin/*' }
 opt.wildmenu = true
 
 -- ui
