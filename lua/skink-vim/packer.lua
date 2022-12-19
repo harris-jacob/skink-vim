@@ -1,51 +1,79 @@
-local cmd = vim.cmd
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
-local present, packer = pcall(require, 'packer')
+-- Only required if you have packer configured as `opt`
+vim.cmd [[packadd packer.nvim]]
 
-local first_install = false
+return require('packer').startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-if not present then
-    local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
-    print('Cloning packer..')
-    -- remove the dir before cloning
-    vim.fn.delete(packer_path, 'rf')
-    vim.fn.system({
-        'git',
-        'clone',
-        'https://github.com/wbthomason/packer.nvim',
-        '--depth',
-        '20',
-        packer_path,
-    })
+  -- Telescope for file searching/greping
+  use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
-    cmd('packadd packer.nvim')
-    present, packer = pcall(require, 'packer')
+  -- Harpoon for file hopping
+  use { 'ThePrimeagen/harpoon'}
 
-    if present then
-        print('Packer cloned successfully.')
-        first_install = true
-    else
-        error("Couldn't clone packer !\nPacker path: " .. packer_path .. '\n' .. packer)
-    end
-end
+  -- Treesitter for syntax highlighting
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
-packer.init({
-    display = {
-        open_fn = function()
-            return require('packer.util').float({ border = 'rounded' })
-        end,
-        prompt_border = 'rounded',
-    },
-    git = {
-        clone_timeout = 1000, -- Timeout, in seconds, for git clones
-    },
-    compile_path = vim.fn.stdpath('config') .. '/lua/skink-vim/compiled.lua',
-    auto_clean = true,
-    compile_on_sync = true,
-})
+  -- Theme
+  use({
+	  'rose-pine/neovim',
+	  as = 'rose-pine',
+	  config = function()
+		  vim.cmd('colorscheme rose-pine')
+	  end
+  })
 
-return {
-    packer = packer,
-    first_install = first_install,
-}
+  -- Undo tree
+  use('mbbill/undotree')
+
+  -- Git support
+  use('tpope/vim-fugitive')
+
+
+  -- LSP config
+  use {
+	  'VonHeikemen/lsp-zero.nvim',
+	  requires = {
+		  -- LSP Support
+		  {'neovim/nvim-lspconfig'},
+		  {'williamboman/mason.nvim'},
+		  {'williamboman/mason-lspconfig.nvim'},
+
+		  -- Autocompletion
+		  {'hrsh7th/nvim-cmp'},
+		  {'hrsh7th/cmp-buffer'},
+		  {'hrsh7th/cmp-path'},
+		  {'saadparwaiz1/cmp_luasnip'},
+		  {'hrsh7th/cmp-nvim-lsp'},
+		  {'hrsh7th/cmp-nvim-lua'},
+
+		  -- Snippets
+		  {'L3MON4D3/LuaSnip'},
+		  {'rafamadriz/friendly-snippets'},
+	  }
+  }
+
+
+  -- Autopairs
+  use {
+      "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+  }
+
+  -- Tabbar
+  use 'nvim-tree/nvim-web-devicons'
+  use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
+
+  -- bufferline
+  use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
+  end)
