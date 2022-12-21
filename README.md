@@ -6,5 +6,6 @@ nvim config, based on https://github.com/ThePrimeagen/init.lua/
 
 Required installs are:
 
+- packer
 - ripgrep
-
+- delve (for debugging go)
