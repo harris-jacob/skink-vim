@@ -59,6 +59,14 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- null ls to add additional LSP functionality
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = {
+            { 'jose-elias-alvarez/typescript.nvim' },
+        }
+    }
+
 
     -- Autopairs
     use {
