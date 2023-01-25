@@ -64,6 +64,7 @@ return require('packer').startup(function(use)
         'jose-elias-alvarez/null-ls.nvim',
         requires = {
             { 'jose-elias-alvarez/typescript.nvim' },
+            { "nvim-lua/plenary.nvim" }
         }
     }
 
