@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
 
     -- Telescope for file searching/greping
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
