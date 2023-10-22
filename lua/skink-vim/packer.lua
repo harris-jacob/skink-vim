@@ -20,14 +20,24 @@ return require('packer').startup(function(use)
     -- Treesitter for syntax highlighting
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
-    -- Theme
+    -- Themes
+    -- use({
+    --     'rose-pine/neovim',
+    --     as = 'rose-pine',
+    -- })
+
+    -- use('folke/tokyonight.nvim')
+
     use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
+        'sainnhe/everforest',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            vim.cmd('colorscheme everforest')
         end
     })
+
+    -- Unimpaired
+    use('tpope/vim-Unimpaired')
+
 
     -- Undo tree
     use('mbbill/undotree')
@@ -76,8 +86,7 @@ return require('packer').startup(function(use)
     }
 
     -- Tabbar
-    use 'nvim-tree/nvim-web-devicons'
-    use { 'romgrk/barbar.nvim', wants = 'nvim-web-devicons' }
+    use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
 
     -- bufferline
     use {
@@ -95,13 +104,12 @@ return require('packer').startup(function(use)
 
 
     -- debugger
-    use  'mfussenegger/nvim-dap'
-    use  'leoluz/nvim-dap-go'
-    use  'rcarriga/nvim-dap-ui'
-    use  'theHamsta/nvim-dap-virtual-text'
-    use  'nvim-telescope/telescope-dap.nvim'
+    use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'nvim-telescope/telescope-dap.nvim'
 
     -- copilot
     use 'github/copilot.vim'
-
 end)
