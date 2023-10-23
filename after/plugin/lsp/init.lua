@@ -3,6 +3,8 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.ensure_installed({
     'tsserver',
+    'eslint',
+    'lua_ls',
     'rust_analyzer',
     'gopls',
     'elixirls'
@@ -11,7 +13,7 @@ lsp.ensure_installed({
 
 
 -- Helps lua ls find vim global
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {

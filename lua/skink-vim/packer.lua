@@ -78,7 +78,6 @@ return require('packer').startup(function(use)
         }
     }
 
-
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
@@ -96,6 +95,10 @@ return require('packer').startup(function(use)
 
     -- todos
     use { 'folke/todo-comments.nvim' }
+
+
+    -- blamer
+    use { 'APZelos/blamer.nvim' }
 
 
     -- commentary operator
