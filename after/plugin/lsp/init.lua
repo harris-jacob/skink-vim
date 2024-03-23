@@ -7,9 +7,13 @@ lsp.ensure_installed({
     'lua_ls',
     'rust_analyzer',
     'gopls',
-    'elixirls'
+    'elixirls',
 })
 
+-- Gleam support
+lsp.configure('gleam', {
+    force_setup = true
+})
 
 -- Helps lua ls find vim global
 lsp.configure('lua_ls', {
@@ -21,6 +25,7 @@ lsp.configure('lua_ls', {
         }
     }
 })
+
 
 lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr, remap = false }
@@ -37,6 +42,7 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
+    vim.keymap.set("n", "<leader>cR", vim.lsp.buf.rename, opts)
 end)
 
 lsp.setup()

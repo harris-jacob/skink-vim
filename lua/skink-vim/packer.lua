@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason.nvim'},
             { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
@@ -115,7 +115,7 @@ return require('packer').startup(function(use)
     -- debugger
     use 'mfussenegger/nvim-dap'
     use 'leoluz/nvim-dap-go'
-    use 'rcarriga/nvim-dap-ui'
+    use {'rcarriga/nvim-dap-ui', requires = "nvim-neotest/nvim-nio"}
     use 'theHamsta/nvim-dap-virtual-text'
     use 'nvim-telescope/telescope-dap.nvim'
 
