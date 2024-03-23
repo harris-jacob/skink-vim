@@ -78,6 +78,12 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- Like make command but determins build system from file
+    use {
+        'neomake/neomake',
+    }
+
+
     -- Autopairs
     use {
         "windwp/nvim-autopairs",
@@ -94,7 +100,7 @@ return require('packer').startup(function(use)
     }
 
     -- todos
-    use { 'folke/todo-comments.nvim' }
+    use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim' }
 
 
     -- blamer

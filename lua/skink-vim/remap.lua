@@ -20,4 +20,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+-- Remap for unimpaired
+vim.keymap.set("n", "<", "[")
+vim.keymap.set("n", ">", "]")
+
 
